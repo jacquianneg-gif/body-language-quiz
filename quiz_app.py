@@ -1,107 +1,68 @@
-import streamlit as st
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Language Lab</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; padding: 20px; color: #1c1e21; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .instructions { background-color: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #1877f2; }
+        .instructions h3 { margin-top: 0; color: #0c59b3; font-size: 1rem; }
+        .scenario { background: #fff9e6; padding: 20px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 25px; line-height: 1.5; }
+        .question { margin-bottom: 20px; font-weight: 600; }
+        .option { display: block; background: #f8f9fa; padding: 12px; margin: 10px 0; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; transition: 0.2s; }
+        .option:hover { background: #e9ecef; }
+        .feedback { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; font-weight: 500; }
+        .correct { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .incorrect { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        button { background: #1877f2; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
 
-def main():
-    st.set_page_config(page_title="Body Language Lab", layout="wide")
-    st.title("How We Communicate Through Body Language")
-    st.markdown("### Interactive Behavioral Research Lab")
-    
-    st.divider()
-    st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
-    st.info("Study the 'Parallel Track'—automatic signals that run with speech.")
-    
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        if st.button("😊 Joy"):
-            st.success("JOY: Marked by the crinkling of the eyes. This signal is a predictor of social success.")
-        if st.button("🙇‍♂️ Lean"):
-            st.info("LEANING: Moving the torso forward indicates interest and receptivity.")
-    with c2:
-        if st.button("😠 Anger"):
-            st.error("ANGER: Narrowed lips and a lowered brow. Signals resistance or a perceived threat.")
-        if st.button("🙅‍♂️ Fold"):
-            st.error("FOLDING: Crossed arms create a barrier, signaling defensiveness.")
-    with c3:
-        if st.button("😨 Fear"):
-            st.warning("FEAR: Raised brows and widened eyes. Signals submissiveness or stress.")
-        if st.button("👤 Hunch"):
-            st.warning("HUNCHING: Signals lower social stature and vulnerability.")
-    
-    st.subheader("The Social Distance Ruler")
-    st.caption("How status dictates physical space, acting as a 'Tie-Sign' to observers.")
-    v = st.slider("Distance (feet):", 1, 15, 5)
-    if v <= 3:
-        st.success(f"{v}ft: INTIMATE ZONE. High-trust bonds and close relationships.")
-    elif v <= 10:
-        st.info(f"{v}ft: SOCIAL ZONE. Standard peer-to-peer and professional space.")
-    else:
-        st.error(f"{v}ft: PUBLIC ZONE. Maintained for formal speaking or strangers.")
+<div class="container">
+    <div class="header">
+        <h1>🕵️ Body Language Lab</h1>
+        <p><em>Factual insights via NotebookLM | Designed by Gemini</em></p>
+    </div>
 
-    st.divider()
-    st.header("II. COMPREHENSIVE ASSESSMENT")
-    
-    if "step" not in st.session_state:
-        st.session_state.step = 0
-    if "score" not in st.session_state:
-        st.session_state.score = 0
-    if "show" not in st.session_state:
-        st.session_state.show = False
+    <div class="instructions">
+        <h3>📋 Student Instructions:</h3>
+        <ol>
+            <li><strong>Read the Scenario:</strong> Carefully analyze the social interaction described below.</li>
+            <li><strong>Identify the Cues:</strong> Look for "Parallel Track" signals (gestures, distance, micro-expressions).</li>
+            <li><strong>Choose the Best Answer:</strong> Use the research data to determine the most likely outcome.</li>
+        </ol>
+    </div>
 
-    qs = [
-        {
-            "q": "What allowed observers to identify sex and emotion in 'point-light' studies?",
-            "o": ["The specific patterns of movement", "Static dot patterns"],
-            "c": "The specific patterns of movement",
-            "e": "Motion decodes identity. Without it, the figure disappears."
-        },
-        {
-            "q": "What does the term 'tie-signs' refer to in nonverbal research?",
-            "o": ["Cues signaling a specific bond", "Formal dress codes"],
-            "c": "Cues signaling a bond",
-            "e": "Tie-signs signal a relationship to observers."
-        },
-        {
-            "q": "Social success and popularity in children is most linked to which skill?",
-            "o": ["Reading facial muscle movements", "Academic math facts"],
-            "c": "Reading facial muscle movements",
-            "e": "Success is linked to 'muscle reading' facial cues like eye crinkling."
-        },
-        {
-            "q": "When a person leans forward, what is the most likely signal?",
-            "o": ["Receptivity and interest", "Boredom or fatigue"],
-            "c": "Receptivity and interest",
-            "e": "Leaning forward shows engagement and openness."
-        },
-        {
-            "q": "Large social distance typically signals what about social status?",
-            "o": ["Lower social stature", "High authority"],
-            "c": "Lower social stature",
-            "e": "Distance avoids appearing as a threat to others."
-        }
-    ]
+    <div class="scenario">
+        <strong>The Scenario:</strong> You are watching a job interview. The candidate is answering a difficult question. While their voice sounds confident, you notice their eyes aren't quite "crinkling" when they smile, and they have subtly increased the distance between themselves and the interviewer.
+    </div>
 
-    if st.session_state.step < len(qs):
-        item = qs[st.session_state.step]
-        st.write(f"### Question {st.session_state.step + 1} of 5")
-        st.write(f"**{item['q']}**")
-        ans = st.radio("Select answer:", item['o'], key=f"q{st.session_state.step}")
-        if st.button("Check Answer"):
-            st.session_state.show = True
-            if ans == item['c']: 
-                st.success(f"CORRECT: {item['e']}")
-                st.session_state.score += 1
-            else:
-                st.error(f"WRONG: {item['e']}")
-        if st.session_state.show and st.button("Next Question ➡️"):
-            st.session_state.step += 1
-            st.session_state.show = False
-            st.rerun()
-    else:
-        st.balloons()
-        st.header(f"Final Score: {st.session_state.score}/5")
-        if st.button("Restart Assessment"):
-            st.session_state.step = 0
-            st.session_state.score = 0
-            st.rerun()
+    <div id="quiz">
+        <div class="question">1. Based on the research, what does the lack of "eye crinkling" during the smile suggest?</div>
+        <div class="option" onclick="checkAnswer(this, true, 'Correct! This is often referred to as a \'social smile\' rather than a genuine felt emotion.')">A) It is likely a "social" or forced smile.</div>
+        <div class="option" onclick="checkAnswer(this, false, 'Actually, the research suggests that genuine smiles require the involuntary movement of muscles around the eyes.')">B) It indicates the candidate is extremely focused.</div>
+        <div class="option" onclick="checkAnswer(this, false, 'Not quite. High confidence is usually paired with more relaxed, genuine facial movements.')">C) It confirms their high level of confidence.</div>
 
-if __name__ == "__main__":
-    main()
+        <div id="feedback" class="feedback"></div>
+    </div>
+</div>
+
+<script>
+    function checkAnswer(element, isCorrect, message) {
+        const feedback = document.getElementById('feedback');
+        feedback.style.display = 'block';
+        feedback.innerHTML = message;
+        feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+        
+        // Disable other options
+        const options = document.querySelectorAll('.option');
+        options.forEach(opt => opt.style.pointerEvents = 'none');
+    }
+</script>
+
+</body>
+</html>
