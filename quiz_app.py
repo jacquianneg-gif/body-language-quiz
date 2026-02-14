@@ -7,15 +7,15 @@ def main():
     
     st.divider()
     
-    # --- I. BEHAVIORAL ANALYSIS SIMULATOR ---
+    # I. BEHAVIORAL ANALYSIS SIMULATOR
     st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
     
     # ADDED STUDENT INSTRUCTIONS
     st.info("""
     **📋 STUDENT INSTRUCTIONS:**
-    1. **Reveal Cues:** Click the buttons in the columns below (😊, 🙇‍♂️, 😠, etc.) to learn what each specific body signal communicates.
-    2. **Observe Proximity:** Use the **'Distance (feet)' slider** to test how physical space affects social interaction zones.
-    3. **Test Knowledge:** Once you've explored, scroll down to Section II to begin your assessment.
+    1. **Explore Cues:** Click the buttons (😊, 🙇‍♂️, 😠, etc.) to see how different body language signals are interpreted.
+    2. **Use the Ruler:** Adjust the **Distance (feet)** slider to see how physical space changes the interaction 'Zone.'
+    3. **Complete Quiz:** Once you've explored the simulator, scroll down to the Assessment section.
     """)
     
     st.write("Study the 'Parallel Track'—automatic nonverbal signals that run with speech.")
@@ -32,9 +32,8 @@ def main():
         if st.button("👤 Hunch"): st.warning("HUNCH: Signals lower social stature and vulnerability.")
     
     st.subheader("Proxemics: Social Distance Ruler")
-    
-    # ADDED SLIDER INSTRUCTIONS IN THE LABEL
-    v = st.slider("Distance Ruler (Slide to change feet and observe the zone):", 1, 15, 5)
+    # Clarified the slider label to help students understand how to use it
+    v = st.slider("Distance (feet): Move the slider to change proximity.", 1, 15, 5)
     
     if v <= 3: st.success(f"{v}ft: INTIMATE ZONE. High-trust bonds.")
     elif v <= 10: st.info(f"{v}ft: SOCIAL ZONE. Professional/Peer interactions.")
@@ -42,11 +41,15 @@ def main():
 
     st.divider()
     
-    # --- II. COMPREHENSIVE ASSESSMENT ---
+    # II. COMPREHENSIVE ASSESSMENT
     st.header("II. COMPREHENSIVE ASSESSMENT")
     
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
     if "show" not in st.session_state: st.session_state.show = False
 
-    # Shuffled 10 detailed questions
+    # The 10 questions from your original version
+    qs = [
+        ("What allowed observers to identify sex and emotion in 'point-light' studies?", 
+         ["The patterns of movement", "Static dot patterns"], 
+         "The patterns of movement", "Motion allows the brain to decode identity."),
