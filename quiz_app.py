@@ -3,7 +3,7 @@ import streamlit as st
 def main():
     st.set_page_config(page_title="Body Language Lab", layout="wide")
     
-    # Clean Professional Header
+    # Professional Header
     st.title("The Professional Body Language Lab")
     st.markdown("### Bridging Nonverbal Theory and Social Literacy")
     
@@ -34,4 +34,23 @@ def main():
     
     st.subheader("Proxemics: The Social Distance Ruler")
     st.caption("INSTRUCTIONS: Use the slider to explore how trust and status dictate physical space.")
-    v = st.slider("Distance (feet):", 1, 15,
+    v = st.slider("Distance (feet):", 1, 15, 5)
+    if v <= 3: st.success(f"{v}ft: INTIMATE ZONE. High-trust bonds and close relationships.")
+    elif v <= 10: st.info(f"{v}ft: SOCIAL ZONE. Standard for peer-to-peer and professional interactions.")
+    else: st.error(f"{v}ft: PUBLIC ZONE. Maintained for formal speaking or strangers.")
+
+    # SECTION 2: THE ASSESSMENT
+    st.divider()
+    st.header("II. COMPREHENSIVE ASSESSMENT")
+    
+    st.markdown("#### Visualizing the Research: The Point-Light Experiment")
+    st.caption("Observers can instantly identify sex and mood from moving dots alone—proof of our 'Parallel Track' perception.")
+    
+    if "step" not in st.session_state: st.session_state.step = 0
+    if "score" not in st.session_state: st.session_state.score = 0
+    if "show" not in st.session_state: st.session_state.show = False
+
+    qs = [
+        ("What allowed observers to identify sex and emotion in 'point-light' studies?", ["The color of dots", "The patterns of movement"], "The patterns of movement", "Static dots appear meaningless. Movement allows the brain to decode identity."),
+        ("What are 'tie-signs'?", ["Formal dress codes", "Cues that signal a specific bond"], "Cues that signal a specific bond", "Tie-signs signal a nonverbal relationship to observers."),
+        ("Social success in children is most linked to which skill?", ["Reading facial muscle movements",
