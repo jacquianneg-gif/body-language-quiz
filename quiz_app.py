@@ -1,18 +1,18 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# We store the app design in a variable called 'html_content'
+# Using triple quotes to wrap the HTML/CSS/JS so Python treats it as one block
 html_content = """
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        body { font-family: -apple-system, sans-serif; background-color: #f0f2f5; padding: 10px; }
+        body { font-family: sans-serif; background-color: #f0f2f5; padding: 10px; }
         .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .instructions { background-color: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #1877f2; }
-        .instructions h3 { margin-top: 0; color: #0c59b3; font-size: 1.1rem; }
+        .instructions h3 { margin-top: 0; color: #0c59b3; font-size: 1rem; }
         .scenario { background: #fff9e6; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 20px; line-height: 1.5; }
-        .option { display: block; background: #f8f9fa; padding: 12px; margin: 10px 0; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; text-align: left; width: 100%; font-size: 1rem; }
+        .option { display: block; background: #f8f9fa; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; border: 1px solid #ddd; text-align: left; width: 100%; font-size: 1rem; }
         .option:hover { background: #e9ecef; }
         .feedback { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; font-weight: 500; }
     </style>
@@ -35,7 +35,16 @@ html_content = """
         </div>
 
         <div class="question">1. What does the lack of "eye crinkling" suggest?</div>
-        <button class="option" onclick="document.getElementById('result').style.display='block'">A) It is likely a "social" or forced smile.</button>
-        <button class="option" onclick="alert('Try again! Think about involuntary muscle movements.')">B) It indicates the candidate is extremely focused.</button>
+        <button class="option" onclick="document.getElementById('res').style.display='block'">A) It is likely a "social" or forced smile.</button>
+        <button class="option" onclick="alert('Not quite! Look closer at the involuntary muscle movements.')">B) It indicates the candidate is extremely focused.</button>
         
-        <div id="result" class="feedback">
+        <div id="res" class="feedback">
+            <strong>Correct!</strong> Research shows genuine smiles involve involuntary eye-area muscle movement.
+        </div>
+    </div>
+</body>
+</html>
+"""
+
+# This displays the HTML content in your app
+components.html(html_content, height=650, scrolling=True)
