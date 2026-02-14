@@ -10,9 +10,9 @@ def main():
     
     st.info("""
     **📋 STUDENT INSTRUCTIONS:**
-    1. **Explore Behavioral Cues:** Click the buttons below (😊, 🙇‍♂️, 😠, etc.) to reveal how specific physical signals are interpreted in professional settings.
-    2. **Observe Social Distance:** Use the slider below to adjust the physical space between people. Observe how the classification of the 'Social Zone' changes as distance increases.
-    3. **Test Knowledge:** Once you have explored the simulator, scroll down to Section II to complete the comprehensive assessment.
+    1. **Explore Behavioral Cues:** Click the buttons below to reveal how specific physical signals are interpreted in professional settings.
+    2. **Observe Social Distance:** Use the slider below to adjust physical space and see how interaction zones are classified.
+    3. **Test Knowledge:** Scroll to Section II to complete the formal assessment.
     """)
     
     st.write("Study the 'Parallel Track'—the automatic nonverbal signals that run constantly alongside spoken words.")
@@ -25,7 +25,7 @@ def main():
         if st.button("😠 Resistance"): st.error("RESISTANCE: Tightened lips and a lowered brow often signal internal disagreement or a lack of openness to new ideas.")
         if st.button("🙅‍♂️ Barriers"): st.error("BARRIERS: Crossing arms or placing objects between people can signal a defensive posture or a need for protection.")
     with c3:
-        if st.button("😨 Stress"): st.warning("STRESS: Raised eyebrows and widened eyes often signal that a person feels overwhelmed or threatened by the environment.")
+        if st.button("😨 Stress"): st.warning("STRESS: Raised eyebrows and widened eyes often signal that a person feels overwhelmed or threatened.")
         if st.button("👤 Diminishment"): st.warning("DIMINISHMENT: Hunching the shoulders or lowering the head signals a lack of confidence or a lower perceived social stature.")
     
     st.subheader("The Social Distance Ruler")
@@ -42,9 +42,16 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "show" not in st.session_state: st.session_state.show = False
 
-    # Expanded questions and long explanations
     qs = [
-        ("In the famous 'point-light' studies, what specific information allowed observers to identify the sex and emotional state of a subject?", 
-         ["The specific patterns of movement", "The static arrangement of the light dots"], 
+        ("In 'point-light' studies, what specific information allowed observers to identify sex and emotion?", 
+         ["The specific patterns of movement", "The static arrangement of dots"], 
          "The specific patterns of movement", 
-         "The study
+         "The study proved that the human brain decodes identity and emotion through the rhythm and flow of motion, even when no physical body is visible."),
+        ("What does the research term 'tie-signs' refer to when analyzing human nonverbal behavior?", 
+         ["Cues that signal a relationship exists", "The formal dress codes of a group"], 
+         "Cues that signal a relationship exists", 
+         "Tie-signs are signals like a hand on a shoulder or shared proximity that inform observers of the specific bond or 'tie' between two people."),
+        ("According to research, what skill is most closely linked to social success and popularity in children?", 
+         ["The ability to read facial muscle movements", "The ability to memorize complex academic facts"], 
+         "The ability to read facial muscle movements", 
+         "Children who can accurately decode nonverbal 'muscle movements' are better at navigating social nuances, which leads to higher peer acceptance
