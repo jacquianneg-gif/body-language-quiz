@@ -5,54 +5,69 @@ def main():
     st.title("The Professional Body Language Lab")
     st.divider()
     
-    # --- SECTION I: SIMULATOR (IMAGE & WORD DISCOVERY) ---
+    # --- SECTION I: SIMULATOR ---
     st.header("I. Behavioral Analysis Simulator")
-    st.write("Click on the behavioral signal to reveal the professional analysis.")
+    st.write("Examine the signal, then click 'Analyze' to reveal the professional interpretation.")
     
-    # Discovery Grid
+    # We use columns to create the grid layout
     c1, c2, c3 = st.columns(3)
+    
     with c1:
-        st.write("😊 **JOY**")
+        st.subheader("😊 JOY")
         if st.button("Analyze Joy"):
-            st.success("ANALYSIS: True joy is signaled by involuntary muscle contraction around the eyes. This indicates genuine warmth and social rapport.")
-        
-        st.write("🙇‍♂️ **THE LEAN**")
+            st.success("ANALYSIS: True joy (Duchenne smile) involves involuntary muscle contraction around the eyes.")
+            
+        st.subheader("🙇‍♂️ THE LEAN")
         if st.button("Analyze The Lean"):
-            st.info("ANALYSIS: Moving the torso toward a speaker indicates high levels of interest, active listening, and receptivity.")
+            st.info("ANALYSIS: Leaning the torso forward reduces distance and signals high interest and receptivity.")
 
     with c2:
-        st.write("😠 **RESISTANCE**")
+        st.subheader("😠 RESISTANCE")
         if st.button("Analyze Resistance"):
-            st.error("ANALYSIS: Tightened lips and a lowered brow often signal internal disagreement or a lack of openness to new ideas.")
+            st.error("ANALYSIS: Compressed lips and a lowered brow often signal internal disagreement or cognitive effort.")
             
-        st.write("🙅‍♂️ **BARRIERS**")
+        st.subheader("🙅‍♂️ BARRIERS")
         if st.button("Analyze Barriers"):
-            st.error("ANALYSIS: Crossing arms can signal a defensive posture or a subconscious need for protection in a social environment.")
+            st.error("ANALYSIS: Arms crossed across the chest acts as a 'barrier' to protect vital organs, signaling defensiveness.")
 
     with c3:
-        st.write("😨 **STRESS**")
+        st.subheader("😨 STRESS")
         if st.button("Analyze Stress"):
-            st.warning("ANALYSIS: Raised eyebrows and widened eyes signal that a person feels overwhelmed or threatened by their current environment.")
+            st.warning("ANALYSIS: Widened eyes and raised brows increase visual intake, signaling a person feels threatened.")
             
-        st.write("👤 **DIMINISHMENT**")
+        st.subheader("👤 DIMINISHMENT")
         if st.button("Analyze Diminishment"):
-            st.warning("ANALYSIS: Hunching the shoulders or lowering the head signals a lack of confidence or a lower perceived social stature.")
+            st.warning("ANALYSIS: Hunching shoulders (the 'turtle effect') is an attempt to appear smaller and less threatening.")
 
-    # --- SECTION II: ASSESSMENT (WITH FULL EXPLANATIONS) ---
     st.divider()
+    
+    # --- SECTION II: ASSESSMENT ---
     st.header("II. Comprehensive Assessment")
     
+    # Initialize session state for the quiz
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
     if "feedback" not in st.session_state: st.session_state.feedback = None
 
-    # Assessment data - Structured to prevent truncation errors
-    qs = [
-        ["In 'point-light' studies, what identifies sex and emotion?", ["Patterns of movement", "Static dots"], "Patterns of movement", "The brain decodes identity and emotion through the rhythm of motion, even without a visible body."],
-        ["What do 'tie-signs' refer to in social groups?", ["Cues signaling a relationship", "Dress codes"], "Cues signaling a relationship", "Tie-signs are signals like a hand on a shoulder that inform observers of a specific bond between people."],
-        ["What skill is linked to social success in children?", ["Reading facial muscles", "Academic facts"], "Reading facial muscles", "Accurately decoding nonverbal 'muscle movements' leads to better social navigation and peer acceptance."],
-        ["When a person leans forward, what is the signal?", ["High receptivity", "Boredom"], "High receptivity", "A forward lean reduces distance and signals that the listener is fully engaged and open to the information."],
-        ["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature", "Individuals with lower stature often maintain more distance to avoid appearing as a threat to those with more power."],
-        ["Define the 'parallel track' of communication.", ["Nonverbal cues with speech", "Two languages"], "Nonverbal cues with speech", "The verbal track handles words, while the parallel nonverbal track handles the emotional truth and context."],
-        ["Where do men look for reassurance when threatened?", ["Partners/companions", "Strangers"], "Partners/companions", "In high-stress settings, individuals often glance toward a 'safe' person to gather nonverbal data and support."],
-        ["Why is nonverbal signaling 'automatic'?", ["Involuntary muscles", "Practice"], "Involuntary muscles",
+    # We build the question list one by one to prevent code crashes
+    qs = []
+    
+    # Q1
+    qs.append([
+        "In 'point-light' studies, what allowed observers to identify sex and emotion?",
+        ["Patterns of movement", "Static arrangement of dots"],
+        "Patterns of movement",
+        "The brain decodes identity through the 'rhythm' of motion, even without a visible body."
+    ])
+    
+    # Q2
+    qs.append([
+        "What do 'tie-signs' refer to in social analysis?",
+        ["Cues signaling a relationship exists", "Formal dress codes"],
+        "Cues signaling a relationship exists",
+        "Tie-signs (like touching or proximity) publicly signal the bond between two people."
+    ])
+    
+    # Q3
+    qs.append([
+        "What skill is most linked
