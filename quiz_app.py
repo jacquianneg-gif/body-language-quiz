@@ -8,7 +8,7 @@ def main():
     
     st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
     st.info("""**📋 STUDENT INSTRUCTIONS:**
-1. **Explore Behavioral Cues:** Click the buttons below to reveal how specific physical signals are interpreted.
+1. **Explore Behavioral Cues:** Click the buttons below to reveal how specific physical signals are interpreted in professional settings.
 2. **Observe Social Distance:** Use the slider below to adjust physical space and see how interaction zones are classified.
 3. **Test Knowledge:** Scroll to Section II to complete the formal assessment.""")
     
@@ -34,4 +34,12 @@ def main():
     st.header("II. COMPREHENSIVE ASSESSMENT")
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
-    if "show" not in st.session
+    if "show" not in st.session_state: st.session_state.show = False
+
+    # Question bank with full sentences and detailed feedback
+    data = [
+        ["In the famous 'point-light' studies, what specific information allowed observers to identify the sex and emotional state of a subject?", 
+         ["The specific patterns of movement", "The static arrangement of the light dots"], "The specific patterns of movement", 
+         "The study proved that the human brain decodes identity and emotion through the rhythm and flow of motion, even when no physical body is visible."],
+        ["What does the research term 'tie-signs' refer to when analyzing human nonverbal behavior in a social group?", 
+         ["Specific cues that signal a relationship
