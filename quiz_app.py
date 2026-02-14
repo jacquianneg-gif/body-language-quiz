@@ -4,50 +4,65 @@ def main():
     st.set_page_config(page_title="Body Language Lab", layout="wide")
     st.title("The Professional Body Language Lab")
     st.divider()
+
+    # --- I. PROXIMITY SLIDER ---
+    st.header("I. Proximity & Space")
+    st.write("Adjust the slider to see the social zones of distance.")
+    dist = st.slider("Distance in Feet:", 0.0, 15.0, 4.0)
     
-    # --- I. SIMULATOR (CLICK-TO-REVEAL) ---
-    st.header("I. Behavioral Analysis Simulator")
+    if dist < 1.5:
+        st.error(f"{dist}ft: INTIMATE ZONE (Extreme trust or threat)")
+    elif dist < 4.0:
+        st.success(f"{dist}ft: PERSONAL ZONE (Friends and family)")
+    elif dist < 12.0:
+        st.info(f"{dist}ft: SOCIAL ZONE (Professional/Casual)")
+    else:
+        st.warning(f"{dist}ft: PUBLIC ZONE (Strangers/Formal)")
+
+    st.divider()
+    
+    # --- II. BEHAVIORAL SIMULATOR ---
+    st.header("II. Behavioral Analysis Simulator")
     st.write("Click a button to analyze the nonverbal signal.")
     
-    c1, c2, c3 = st.columns(3)
+    c1, c2 = st.columns(2)
     with c1:
         st.subheader("😊 JOY")
         if st.button("Analyze Joy"):
             st.success("ANALYSIS: True joy involves involuntary "
                        "muscle contraction around the eyes.")
-        st.subheader("🙇‍♂️ THE LEAN")
-        if st.button("Analyze The Lean"):
-            st.info("ANALYSIS: Leaning forward reduces distance "
-                    "and signals high interest.")
-    with c2:
+        
         st.subheader("😠 RESISTANCE")
         if st.button("Analyze Resistance"):
             st.error("ANALYSIS: Compressed lips signal internal "
                      "disagreement or cognitive effort.")
+
         st.subheader("🙅‍♂️ BARRIERS")
         if st.button("Analyze Barriers"):
             st.error("ANALYSIS: Crossed arms act as a barrier, "
                      "signaling defensiveness.")
-    with c3:
+            
+    with c2:
         st.subheader("😨 STRESS")
         if st.button("Analyze Stress"):
             st.warning("ANALYSIS: Widened eyes increase visual "
                        "intake, signaling a threat response.")
-        st.subheader("👤 THE TURTLE EFFECT")
-        if st.button("Analyze The Turtle"):
-            st.warning("ANALYSIS: Hunching the shoulders is an "
-                       "attempt to appear smaller and less threatening.")
+
+        st.subheader("🙇‍♂️ HUNCHED SHOULDERS")
+        if st.button("Analyze Posture"):
+            st.warning("ANALYSIS: Hunching is an attempt to "
+                       "appear smaller and less threatening.")
 
     st.divider()
     
-    # --- II. ASSESSMENT ---
-    st.header("II. Comprehensive Assessment")
+    # --- III. ASSESSMENT ---
+    st.header("III. Comprehensive Assessment")
     
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
     if "fb" not in st.session_state: st.session_state.fb = None
 
-    # Hardened Question Data - Options Shuffled
+    # Shuffled Question Data
     qs = [
         {
             "q": "In 'point-light' studies, what identifies sex and emotion?",
@@ -115,7 +130,6 @@ def main():
         curr = qs[st.session_state.step]
         st.subheader(f"Question {st.session_state.step + 1}")
         st.write(f"**{curr['q']}**")
-        
         ans = st.radio("Pick one:", curr['o'], key=f"ans_{st.session_state.step}")
         
         if st.button("Check Answer"):
@@ -129,7 +143,6 @@ def main():
             res, msg = st.session_state.fb
             if res == "ok": st.success(msg)
             else: st.error(msg)
-            
             if st.button("Next ➡️"):
                 st.session_state.step += 1
                 st.session_state.fb = None
