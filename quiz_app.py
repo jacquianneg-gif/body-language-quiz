@@ -53,49 +53,46 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "feedback" not in st.session_state: st.session_state.feedback = None
 
-    # Quiz Database - formatted with multi-line strings to prevent truncation
-    qs = [
-        {
-            "q": "In 'point-light' studies, what identifies sex and emotion?",
-            "o": ["Patterns of movement", "Static dots"],
-            "c": "Patterns of movement",
-            "e": "The brain decodes identity and emotion through the rhythm "
-                 "of motion, even without a visible body."
-        },
-        {
-            "q": "What do 'tie-signs' refer to in social groups?",
-            "o": ["Cues signaling a relationship", "Dress codes"],
-            "c": "Cues signaling a relationship",
-            "e": "Tie-signs are signals like a hand on a shoulder that inform "
-                 "observers of a specific bond between people."
-        },
-        {
-            "q": "What skill is linked to social success in children?",
-            "o": ["Reading facial muscles", "Academic facts"],
-            "c": "Reading facial muscles",
-            "e": "Accurately decoding nonverbal cues leads to better social "
-                 "navigation and peer acceptance."
-        },
-        {
-            "q": "When a person leans forward, what is the signal?",
-            "o": ["High receptivity", "Boredom"],
-            "c": "High receptivity",
-            "e": "A forward lean reduces distance and signals that the "
-                 "listener is fully engaged and open."
-        },
-        {
-            "q": "Large physical distance often signals what?",
-            "o": ["Lower social stature", "High authority"],
-            "c": "Lower social stature",
-            "e": "Individuals with lower stature often maintain more distance "
-                 "to avoid appearing as a threat to those in power."
-        },
-        {
-            "q": "Define the 'parallel track' of communication.",
-            "o": ["Nonverbal cues with speech", "Two languages"],
-            "c": "Nonverbal cues with speech",
-            "e": "The verbal track handles words, while the parallel nonverbal "
-                 "track handles the emotional truth and context."
-        },
-        {
-            "q": "Where do
+    # We build the question list one-by-one to prevent truncation errors
+    qs = []
+    
+    # Q1
+    qs.append([
+        "In 'point-light' studies, what identifies sex and emotion?",
+        ["Patterns of movement", "Static dots"],
+        "Patterns of movement",
+        "The brain decodes identity through the 'rhythm' of motion, even "
+        "without a visible body."
+    ])
+    
+    # Q2
+    qs.append([
+        "What do 'tie-signs' refer to in social groups?",
+        ["Cues signaling a relationship", "Dress codes"],
+        "Cues signaling a relationship",
+        "Tie-signs (like a hand on a shoulder) publicly signal the bond "
+        "between two people."
+    ])
+    
+    # Q3
+    qs.append([
+        "What skill is most linked to social success in children?",
+        ["Reading facial muscle movements", "Memorizing facts"],
+        "Reading facial muscle movements",
+        "Decoding nonverbal cues allows children to navigate social nuances "
+        "and gain peer acceptance."
+    ])
+
+    # Q4
+    qs.append([
+        "When a person leans their torso forward, what is the signal?",
+        ["Receptivity and interest", "Boredom"],
+        "Receptivity and interest",
+        "Leaning in is a proximity cue that signals the listener is "
+        "engaged and open to interaction."
+    ])
+
+    # Q5
+    qs.append([
+        "What does large physical distance typically signal about stature?",
+        ["Lower
