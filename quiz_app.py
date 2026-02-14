@@ -38,7 +38,7 @@ def main():
         if st.button("Analyze Diminishment"):
             st.warning("ANALYSIS: Hunching the shoulders or lowering the head signals a lack of confidence or a lower perceived social stature.")
 
-    # --- SECTION II: ASSESSMENT (WITH EXPLANATIONS) ---
+    # --- SECTION II: ASSESSMENT (WITH FULL EXPLANATIONS) ---
     st.divider()
     st.header("II. Comprehensive Assessment")
     
@@ -46,10 +46,10 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "feedback" not in st.session_state: st.session_state.feedback = None
 
-    # Data: [Question, Options, Correct, Explanation]
-    questions = [
+    # Assessment data - Structured to prevent truncation errors
+    qs = [
         ["In 'point-light' studies, what identifies sex and emotion?", ["Patterns of movement", "Static dots"], "Patterns of movement", "The brain decodes identity and emotion through the rhythm of motion, even without a visible body."],
         ["What do 'tie-signs' refer to in social groups?", ["Cues signaling a relationship", "Dress codes"], "Cues signaling a relationship", "Tie-signs are signals like a hand on a shoulder that inform observers of a specific bond between people."],
         ["What skill is linked to social success in children?", ["Reading facial muscles", "Academic facts"], "Reading facial muscles", "Accurately decoding nonverbal 'muscle movements' leads to better social navigation and peer acceptance."],
         ["When a person leans forward, what is the signal?", ["High receptivity", "Boredom"], "High receptivity", "A forward lean reduces distance and signals that the listener is fully engaged and open to the information."],
-        ["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature",
+        ["Large physical distance often signals what?", ["Lower social stature", "High authority"],
