@@ -1,63 +1,61 @@
 import streamlit as st
 
 def main():
-    st.set_page_config(page_title="Body Language", layout="wide")
+    st.set_page_config(page_title="Body Language Lab", layout="wide")
     st.title("How We Communicate Through Body Language")
+    st.markdown("### Bridging Nonverbal Theory and Social Literacy")
     
-    st.header("I. BEHAVIOR SIMULATOR")
-    st.info("The 'Parallel Track': Nonverbal cues running with speech.")
+    st.divider()
+    st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
+    st.info("Study the 'Parallel Track'—the automatic nonverbal signals that run simultaneously with spoken words.")
     
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("😊 Joy"): st.success("Joy: Crinkled eyes (Duchenne).")
-        if st.button("🙇‍♂️ Lean"): st.info("Lean: High interest/receptivity.")
+        if st.button("😊 Joy"): 
+            st.success("JOY: Characterized by the Duchenne smile (crinkled eyes). It signals genuine warmth and high social receptivity.")
+        if st.button("🙇‍♂️ Lean"): 
+            st.info("LEANING: Moving the torso forward indicates a high level of interest, engagement, and openness to the speaker.")
     with c2:
-        if st.button("😠 Anger"): st.error("Anger: Tight lips/lowered brow.")
-        if st.button("🙅‍♂️ Fold"): st.error("Fold: Defensive barrier cue.")
+        if st.button("😠 Anger"): 
+            st.error("ANGER: Marked by narrowed lips and a lowered brow. It signals resistance, disagreement, or a perceived threat.")
+        if st.button("🙅‍♂️ Fold"): 
+            st.error("FOLDING: Crossing the arms creates a physical barrier, signaling defensiveness or a lack of receptivity.")
     with c3:
-        if st.button("😨 Fear"): st.warning("Fear: Raised brows/stress.")
-        if st.button("👤 Hunch"): st.warning("Hunch: Signals lower status.")
+        if st.button("😨 Fear"): 
+            st.warning("FEAR: Indicated by raised brows and widened eyes. It signals submissiveness, high stress, or anxiety.")
+        if st.button("👤 Hunch"): 
+            st.warning("HUNCHING: This posture signals lower social stature, a desire to disappear, or a feeling of vulnerability.")
     
-    st.subheader("Social Distance (Tie-Signs)")
-    v = st.slider("Feet:", 1, 15, 5)
-    if v <= 3: st.success(f"{v}ft: INTIMATE.")
-    elif v <= 10: st.info(f"{v}ft: SOCIAL.")
-    else: st.error(f"{v}ft: PUBLIC.")
+    st.subheader("The Social Distance Ruler")
+    st.caption("How trust and status dictate the physical space between people, acting as a 'Tie-Sign' to observers.")
+    v = st.slider("Distance (feet):", 1, 15, 5)
+    if v <= 3: 
+        st.success(f"{v}ft: INTIMATE ZONE. Reserved for high-trust bonds and close personal relationships.")
+    elif v <= 10: 
+        st.info(f"{v}ft: SOCIAL ZONE. The standard distance for peer-to-peer and professional interactions.")
+    else: 
+        st.error(f"{v}ft: PUBLIC ZONE. Distance maintained for formal speaking or interactions with strangers.")
 
     st.divider()
-    st.header("II. MASTER QUIZ")
-    if "s" not in st.session_state: st.session_state.s = 0
-    if "sc" not in st.session_state: st.session_state.sc = 0
+    st.header("II. COMPREHENSIVE ASSESSMENT")
+    
+    if "step" not in st.session_state: st.session_state.step = 0
+    if "score" not in st.session_state: st.session_state.score = 0
+    if "show" not in st.session_state: st.session_state.show = False
 
-    # Shuffled answers (Mixed A and B)
+    # 10 Detailed Questions with Shuffled Answer Keys
     qs = [
-        ("Identify sex in dot studies via?", ["Dots", "Motion"], "Motion"),
-        ("What are 'tie-signs'?", ["Bond cues", "Dress"], "Bond cues"),
-        ("Success linked to reading?", ["Face muscles", "Math"], "Face muscles"),
-        ("Leaning forward signals?", ["Boredom", "Interest"], "Interest"),
-        ("Large distance signals?", ["Low status", "High status"], "Low status"),
-        ("The 'parallel track' is?", ["Nonverbal", "Speech"], "Nonverbal"),
-        ("Threatened men look to?", ["Partners", "Strangers"], "Partners"),
-        ("Cues are usually?", ["Automatic", "Manual"], "Automatic"),
-        ("No motion, figure?", ["Disappears", "Stays"], "Disappears"),
-        ("Cues help navigate?", ["Hierarchies", "Exits"], "Hierarchies")
-    ]
-
-    if st.session_state.s < len(qs):
-        q, opts, cor = qs[st.session_state.s]
-        st.write(f"**Question {st.session_state.s+1}/10: {q}**")
-        ans = st.radio("Pick:", opts, key=f"q{st.session_state.s}")
-        if st.button("Submit Answer"):
-            if ans == cor: 
-                st.success("Correct!")
-                st.session_state.sc += 1
-            else: st.error(f"Wrong. Correct: {cor}")
-            st.session_state.s += 1
-            st.button("Next")
-    else:
-        st.balloons(); st.header(f"Score: {st.session_state.sc}/10")
-        if st.button("Restart"):
-            st.session_state.s = 0; st.session_state.sc = 0; st.rerun()
-
-if __name__ == "__main__":
-    main()
+        {
+            "q": "What allowed observers to identify sex and emotion in 'point-light' studies?",
+            "o": ["Static dot patterns and arrangements", "The specific patterns of movement"],
+            "c": "The specific patterns of movement",
+            "e": "When dots stop moving, the human figure disappears. Movement is the key to decoding identity."
+        },
+        {
+            "q": "What does the term 'tie-signs' refer to in nonverbal communication research?",
+            "o": ["Nonverbal cues that signal a specific bond or relationship", "Formal dress codes required in professional organizations"],
+            "c": "Nonverbal cues that signal a specific bond or relationship",
+            "e": "Tie-signs act as signals to observers about the nature of the relationship between two people."
+        },
+        {
+            "q": "Social success and popularity in children is most
