@@ -21,37 +21,37 @@ def main():
 
     st.divider()
     
-    # --- II. BEHAVIORAL SIMULATOR ---
+    # --- II. BEHAVIORAL ANALYSIS SIMULATOR ---
     st.header("II. Behavioral Analysis Simulator")
-    st.write("Click a button to analyze the nonverbal signal.")
+    st.write("Click to reveal the analysis for each physical expression.")
     
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("😊 JOY")
-        if st.button("Analyze Joy"):
-            st.success("ANALYSIS: True joy involves involuntary "
-                       "muscle contraction around the eyes.")
+        st.subheader("😊 MUSCLE CONTRACTION AROUND EYES")
+        if st.button("Analyze Smile"):
+            st.success("ANALYSIS: Indicates genuine 'Duchenne' joy, "
+                       "as these muscles are usually involuntary.")
         
-        st.subheader("😠 RESISTANCE")
-        if st.button("Analyze Resistance"):
-            st.error("ANALYSIS: Compressed lips signal internal "
-                     "disagreement or cognitive effort.")
+        st.subheader("👄 LIP COMPRESSION")
+        if st.button("Analyze Lips"):
+            st.error("ANALYSIS: Often signals internal disagreement, "
+                     "resistance, or the holding back of information.")
 
-        st.subheader("🙅‍♂️ BARRIERS")
-        if st.button("Analyze Barriers"):
-            st.error("ANALYSIS: Crossed arms act as a barrier, "
-                     "signaling defensiveness.")
+        st.subheader("🙅‍♂️ CROSSED ARMS")
+        if st.button("Analyze Arms"):
+            st.error("ANALYSIS: Acts as a physical barrier to "
+                     "protect the torso, signaling defensiveness.")
             
     with c2:
-        st.subheader("😨 STRESS")
-        if st.button("Analyze Stress"):
-            st.warning("ANALYSIS: Widened eyes increase visual "
-                       "intake, signaling a threat response.")
+        st.subheader("😨 RAISED EYEBROWS")
+        if st.button("Analyze Brows"):
+            st.warning("ANALYSIS: Increases the visual field to "
+                       "take in more data during a threat or stress.")
 
         st.subheader("🙇‍♂️ HUNCHED SHOULDERS")
-        if st.button("Analyze Posture"):
-            st.warning("ANALYSIS: Hunching is an attempt to "
-                       "appear smaller and less threatening.")
+        if st.button("Analyze Shoulders"):
+            st.warning("ANALYSIS: A 'diminishing' posture used to "
+                       "appear smaller or less threatening to others.")
 
     st.divider()
     
@@ -62,7 +62,7 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "fb" not in st.session_state: st.session_state.fb = None
 
-    # Shuffled Question Data
+    # Mixed Question Data
     qs = [
         {
             "q": "In 'point-light' studies, what identifies sex and emotion?",
@@ -157,3 +157,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
