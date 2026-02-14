@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# FULL SCRIPT - Copy everything below this line
+# FULL SCRIPT: Includes original grey background, icons, and slider.
 app_code = """
 <!DOCTYPE html>
 <html>
@@ -54,4 +54,7 @@ app_code = """
         <div class="instruction-header">
             <strong>📋 Student Instructions:</strong>
             <ul style="margin: 8px 0 0 20px; padding: 0; line-height: 1.5;">
-                <li><strong>Explore:</strong> Click each icon (🔊, 👀, 📏) to reveal
+                <li><strong>Icons:</strong> Click 🔊, 👀, and 📏 below to reveal hidden cues.</li>
+                <li><strong>Slider:</strong> Adjust physical distance to see how it impacts the scene.</li>
+                <li><strong>Quiz:</strong> Select the correct answer based on your findings.</li>
+            </ul>
