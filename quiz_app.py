@@ -52,4 +52,7 @@ def main():
         ["What do 'tie-signs' refer to in social groups?", ["Cues signaling a relationship", "Dress codes"], "Cues signaling a relationship", "Tie-signs are signals like a hand on a shoulder that inform observers of a specific bond between people."],
         ["What skill is linked to social success in children?", ["Reading facial muscles", "Academic facts"], "Reading facial muscles", "Accurately decoding nonverbal 'muscle movements' leads to better social navigation and peer acceptance."],
         ["When a person leans forward, what is the signal?", ["High receptivity", "Boredom"], "High receptivity", "A forward lean reduces distance and signals that the listener is fully engaged and open to the information."],
-        ["Large physical distance often signals what?", ["Lower social stature", "High authority"],
+        ["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature", "Individuals with lower stature often maintain more distance to avoid appearing as a threat to those with more power."],
+        ["Define the 'parallel track' of communication.", ["Nonverbal cues with speech", "Two languages"], "Nonverbal cues with speech", "The verbal track handles words, while the parallel nonverbal track handles the emotional truth and context."],
+        ["Where do men look for reassurance when threatened?", ["Partners/companions", "Strangers"], "Partners/companions", "In high-stress settings, individuals often glance toward a 'safe' person to gather nonverbal data and support."],
+        ["Why is nonverbal signaling 'automatic'?", ["Involuntary muscles", "Practice"], "Involuntary muscles",
