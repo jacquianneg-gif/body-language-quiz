@@ -8,12 +8,11 @@ def main():
     st.divider()
     st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
     
-    # Simple, direct instructions added here
+    # Simple instructions added here
     st.info("""
     **STUDENT INSTRUCTIONS:**
-    1. **Explore Cues:** Click each button (😊, 🙇‍♂️, 😠, etc.) to see what that body language signal conveys.
-    2. **Test Distance:** Use the slider below to see how physical feet translate into different 'Social Zones.'
-    3. **Assessment:** After exploring, scroll down to complete the 10-question quiz.
+    * **Icons:** Click each button (😊, 🙇‍♂️, 😠, etc.) to see what that specific body language signal conveys.
+    * **Slider:** Use the 'Distance Ruler' to see how physical distance changes the 'Zone' of interaction.
     """)
     
     st.write("Study the 'Parallel Track'—automatic nonverbal signals that run with speech.")
@@ -55,21 +54,4 @@ def main():
          "Reading facial muscle movements", "Popularity is linked to 'muscle reading'."),
         ("When a person leans forward, what is the most likely signal?", 
          ["Boredom or fatigue", "Receptivity and interest"], 
-         "Receptivity and interest", "Leaning forward shows interest and openness."),
-        ("Large physical distance typically signals what about social status?", 
-         ["Lower social stature", "High authority and power"], 
-         "Lower social stature", "Distance avoids appearing as a threat."),
-        ("What exactly is the 'parallel track' of communication?", 
-         ["Nonverbal cues running with speech", "Speaking two languages at once"], 
-         "Nonverbal cues running with speech", "It runs automatically alongside words."),
-        ("When feeling threatened, men typically look toward...", 
-         ["Partners or companions", "Strangers in the room"], 
-         "Partners or companions", "Men look to partners for nonverbal reassurance."),
-        ("Why is nonverbal signaling considered 'automatic'?", 
-         ["It involves involuntary muscle movements", "It must be practiced in a mirror"], 
-         "It involves involuntary muscle movements", "Involuntary cues are more 'honest'."),
-        ("What happens when 'point-light' dots stop moving?", 
-         ["The figure remains visible", "The human figure disappears"], 
-         "The human figure disappears", "Perception requires motion to activate the track."),
-        ("How do nonverbal cues help people navigate social groups?", 
-         ["By signaling status and receptivity
+         "Receptivity and interest", "Leaning
