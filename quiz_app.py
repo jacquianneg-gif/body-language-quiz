@@ -33,10 +33,10 @@ def main():
         if st.button("Analyze Stress"):
             st.warning("ANALYSIS: Widened eyes increase visual "
                        "intake, signaling a threat response.")
-        st.subheader("👤 DIMINISHMENT")
-        if st.button("Analyze Diminishment"):
-            st.warning("ANALYSIS: Hunching is an attempt to "
-                       "appear smaller and less threatening.")
+        st.subheader("👤 THE TURTLE EFFECT")
+        if st.button("Analyze The Turtle"):
+            st.warning("ANALYSIS: Hunching the shoulders is an "
+                       "attempt to appear smaller and less threatening.")
 
     st.divider()
     
@@ -47,7 +47,7 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "fb" not in st.session_state: st.session_state.fb = None
 
-    # Hardened Question Data
+    # Hardened Question Data - Options Shuffled
     qs = [
         {
             "q": "In 'point-light' studies, what identifies sex and emotion?",
@@ -57,13 +57,13 @@ def main():
         },
         {
             "q": "What do 'tie-signs' refer to in social groups?",
-            "o": ["Cues signaling a relationship", "Dress codes"],
+            "o": ["Dress codes", "Cues signaling a relationship"],
             "c": "Cues signaling a relationship",
             "e": "Tie-signs are signals like a hand on a shoulder."
         },
         {
             "q": "What skill is linked to social success in children?",
-            "o": ["Reading facial muscles", "Academic facts"],
+            "o": ["Academic facts", "Reading facial muscles"],
             "c": "Reading facial muscles",
             "e": "Decoding nonverbal cues allows for peer acceptance."
         },
@@ -75,13 +75,13 @@ def main():
         },
         {
             "q": "Large physical distance often signals what?",
-            "o": ["Lower social stature", "High authority"],
+            "o": ["High authority", "Lower social stature"],
             "c": "Lower social stature",
             "e": "Distance is often used to avoid appearing as a threat."
         },
         {
             "q": "Define the 'parallel track' of communication.",
-            "o": ["Nonverbal cues with speech", "Two languages"],
+            "o": ["Two languages", "Nonverbal cues with speech"],
             "c": "Nonverbal cues with speech",
             "e": "The nonverbal track handles the emotional truth."
         },
@@ -93,13 +93,13 @@ def main():
         },
         {
             "q": "Why is nonverbal signaling 'automatic'?",
-            "o": ["Involuntary muscles", "Practice"],
+            "o": ["Practice", "Involuntary muscles"],
             "c": "Involuntary muscles",
             "e": "The limbic system controls signals like pupil dilation."
         },
         {
             "q": "In 'point-light' studies, what happens when dots stop?",
-            "o": ["Figure disappears", "Figure stays"],
+            "o": ["Figure stays", "Figure disappears"],
             "c": "Figure disappears",
             "e": "The brain requires motion to perceive the human form."
         },
