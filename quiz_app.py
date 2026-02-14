@@ -10,7 +10,7 @@ def main():
     
     st.info("""
     **📋 STUDENT INSTRUCTIONS:**
-    1. **Explore Behavioral Cues:** Click the buttons below to reveal how specific physical signals are interpreted in professional settings.
+    1. **Explore Behavioral Cues:** Click the buttons below to reveal how specific physical signals are interpreted.
     2. **Observe Social Distance:** Use the slider below to adjust physical space and see how interaction zones are classified.
     3. **Test Knowledge:** Scroll to Section II to complete the formal assessment.
     """)
@@ -19,13 +19,13 @@ def main():
     
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("😊 True Joy"): st.success("TRUE JOY: Characterized by involuntary muscle contraction around the eyes. This signals genuine warmth and rapport.")
+        if st.button("😊 True Joy"): st.success("TRUE JOY: This is characterized by involuntary muscle contraction around the eyes, which signals genuine warmth and rapport.")
         if st.button("🙇‍♂️ The Lean"): st.info("THE LEAN: Moving the torso toward a speaker indicates high levels of interest, active listening, and receptivity.")
     with c2:
         if st.button("😠 Resistance"): st.error("RESISTANCE: Tightened lips and a lowered brow often signal internal disagreement or a lack of openness to new ideas.")
         if st.button("🙅‍♂️ Barriers"): st.error("BARRIERS: Crossing arms or placing objects between people can signal a defensive posture or a need for protection.")
     with c3:
-        if st.button("😨 Stress"): st.warning("STRESS: Raised eyebrows and widened eyes often signal that a person feels overwhelmed or threatened.")
+        if st.button("😨 Stress"): st.warning("STRESS: Raised eyebrows and widened eyes often signal that a person feels overwhelmed or threatened by the environment.")
         if st.button("👤 Diminishment"): st.warning("DIMINISHMENT: Hunching the shoulders or lowering the head signals a lack of confidence or a lower perceived social stature.")
     
     st.subheader("The Social Distance Ruler")
@@ -42,16 +42,10 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "show" not in st.session_state: st.session_state.show = False
 
+    # Expanded questions and deep explanations in a safe format
     qs = [
-        ("In 'point-light' studies, what specific information allowed observers to identify sex and emotion?", 
-         ["The specific patterns of movement", "The static arrangement of dots"], 
-         "The specific patterns of movement", 
-         "The study proved that the human brain decodes identity and emotion through the rhythm and flow of motion, even when no physical body is visible."),
-        ("What does the research term 'tie-signs' refer to when analyzing human nonverbal behavior?", 
-         ["Cues that signal a relationship exists", "The formal dress codes of a group"], 
-         "Cues that signal a relationship exists", 
-         "Tie-signs are signals like a hand on a shoulder or shared proximity that inform observers of the specific bond or 'tie' between two people."),
-        ("According to research, what skill is most closely linked to social success and popularity in children?", 
-         ["The ability to read facial muscle movements", "The ability to memorize complex academic facts"], 
-         "The ability to read facial muscle movements", 
-         "Children who can accurately decode nonverbal 'muscle movements' are better at navigating social nuances, which leads to higher peer acceptance
+        {"q": "In the famous 'point-light' studies, what specific information allowed observers to identify the sex and emotional state of a subject?", 
+         "o": ["The specific patterns of movement", "The static arrangement of the light dots"], "c": "The specific patterns of movement", 
+         "e": "The study proved that the human brain decodes identity and emotion through the rhythm and flow of motion, even when no physical body is visible."},
+        {"q": "What does the research term 'tie-signs' refer to when analyzing human nonverbal behavior in a social group?", 
+         "o": ["Specific cues that signal a relationship exists", "The formal dress codes of
