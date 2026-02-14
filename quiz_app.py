@@ -5,7 +5,7 @@ def main():
     st.title("The Professional Body Language Lab")
     st.divider()
     
-    # --- SECTION I: SIMULATOR (CLICK-TO-REVEAL STYLE) ---
+    # --- SECTION I: SIMULATOR (CLICK-TO-REVEAL) ---
     st.header("I. Behavioral Analysis Simulator")
     st.write("Click 'Analyze' to reveal the professional interpretation of each signal.")
     
@@ -27,12 +27,12 @@ def main():
             
         st.subheader("🙅‍♂️ BARRIERS")
         if st.button("Analyze Barriers"):
-            st.error("ANALYSIS: Arms crossed across the chest acts as a barrier, signaling defensiveness or self-protection.")
+            st.error("ANALYSIS: Arms crossed across the chest acts as a barrier, signaling defensiveness.")
 
     with col3:
         st.subheader("😨 STRESS")
         if st.button("Analyze Stress"):
-            st.warning("ANALYSIS: Widened eyes and raised brows increase visual intake, signaling a person feels threatened.")
+            st.warning("ANALYSIS: Widened eyes and raised brows increase visual intake, signaling a threat response.")
             
         st.subheader("👤 DIMINISHMENT")
         if st.button("Analyze Diminishment"):
@@ -47,14 +47,14 @@ def main():
     if "score" not in st.session_state: st.session_state.score = 0
     if "feedback" not in st.session_state: st.session_state.feedback = None
 
-    # Question Database built one-by-one to prevent truncation errors
+    # Question Database - Built with short lines to prevent truncation crashes
     qs = []
     qs.append(["In 'point-light' studies, what identifies sex and emotion?", ["Patterns of movement", "Static dots"], "Patterns of movement", "The brain decodes identity through the 'rhythm' of motion, even without a visible body."])
     qs.append(["What do 'tie-signs' refer to in social groups?", ["Cues signaling a relationship", "Dress codes"], "Cues signaling a relationship", "Tie-signs are signals like a hand on a shoulder that inform observers of a specific bond."])
     qs.append(["What skill is linked to social success in children?", ["Reading facial muscles", "Academic facts"], "Reading facial muscles", "Decoding nonverbal cues allows children to navigate social nuances and gain peer acceptance."])
     qs.append(["When a person leans forward, what is the signal?", ["High receptivity", "Boredom"], "High receptivity", "A forward lean reduces distance and signals that the listener is fully engaged and open."])
-    qs.append(["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature", "Lower-status individuals often maintain distance to avoid appearing as a threat to those in power."])
+    qs.append(["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature", "Lower-status individuals often maintain distance to avoid appearing as a threat."])
     qs.append(["Define the 'parallel track' of communication.", ["Nonverbal cues with speech", "Two languages"], "Nonverbal cues with speech", "The verbal track handles words, while the parallel nonverbal track handles the emotional truth."])
     qs.append(["Where do men look for reassurance when threatened?", ["Partners/companions", "Strangers"], "Partners/companions", "In stress, individuals glance toward a 'safe' person to gather nonverbal data and support."])
-    qs.append(["Why is nonverbal signaling 'automatic'?", ["Involuntary muscles", "Practice"], "Involuntary muscles", "Signals like pupil dilation are driven by the nervous system and are very hard to fake."])
-    qs.append(["In 'point-light' studies, what happens when dots stop?", ["Figure disappears", "Figure stays"], "Figure disappears", "The brain requires the 'track' of motion to perceive a human form; without it
+    qs.append(["Why is nonverbal signaling 'automatic'?", ["Involuntary muscles", "Practice"], "Involuntary muscles", "Signals like pupil dilation are driven by the nervous system and are hard to fake."])
+    qs.append(["In 'point-light' studies, what happens when dots stop?", ["Figure disappears", "Figure stays"], "Figure disappears",
