@@ -1,4 +1,3 @@
-import streamlit as st
 import streamlit.components.v1 as components
 
 # FULL, UNBROKEN CODE - Restoring the original look with added instructions
