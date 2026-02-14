@@ -5,84 +5,142 @@ def main():
     st.title("The Professional Body Language Lab")
     st.divider()
     
-    # --- SECTION I: SIMULATOR (CLICK-TO-REVEAL) ---
+    # --- I. SIMULATOR (CLICK-TO-REVEAL) ---
     st.header("I. Behavioral Analysis Simulator")
-    st.write("Click 'Analyze' to reveal the professional interpretation.")
+    st.write("Click a button to analyze the nonverbal signal.")
     
     c1, c2, c3 = st.columns(3)
-    
     with c1:
         st.subheader("😊 JOY")
         if st.button("Analyze Joy"):
-            st.success("ANALYSIS: True joy (Duchenne smile) involves "
-                       "involuntary muscle contraction around the eyes.")
-            
+            st.success("ANALYSIS: True joy involves involuntary "
+                       "muscle contraction around the eyes.")
         st.subheader("🙇‍♂️ THE LEAN")
         if st.button("Analyze The Lean"):
-            st.info("ANALYSIS: Leaning the torso forward reduces distance "
-                    "and signals high interest and receptivity.")
-
+            st.info("ANALYSIS: Leaning forward reduces distance "
+                    "and signals high interest.")
     with c2:
         st.subheader("😠 RESISTANCE")
         if st.button("Analyze Resistance"):
-            st.error("ANALYSIS: Compressed lips and a lowered brow often "
-                     "signal internal disagreement or cognitive effort.")
-            
+            st.error("ANALYSIS: Compressed lips signal internal "
+                     "disagreement or cognitive effort.")
         st.subheader("🙅‍♂️ BARRIERS")
         if st.button("Analyze Barriers"):
-            st.error("ANALYSIS: Arms crossed across the chest acts as a "
-                     "barrier, signaling defensiveness.")
-
+            st.error("ANALYSIS: Crossed arms act as a barrier, "
+                     "signaling defensiveness.")
     with c3:
         st.subheader("😨 STRESS")
         if st.button("Analyze Stress"):
-            st.warning("ANALYSIS: Widened eyes and raised brows increase "
-                       "visual intake, signaling a threat response.")
-            
+            st.warning("ANALYSIS: Widened eyes increase visual "
+                       "intake, signaling a threat response.")
         st.subheader("👤 DIMINISHMENT")
         if st.button("Analyze Diminishment"):
-            st.warning("ANALYSIS: Hunching shoulders (the 'turtle effect') "
-                       "is an attempt to appear smaller and less threatening.")
+            st.warning("ANALYSIS: Hunching is an attempt to "
+                       "appear smaller and less threatening.")
 
     st.divider()
     
-    # --- SECTION II: ASSESSMENT ---
+    # --- II. ASSESSMENT ---
     st.header("II. Comprehensive Assessment")
     
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
-    if "feedback" not in st.session_state: st.session_state.feedback = None
+    if "fb" not in st.session_state: st.session_state.fb = None
 
-    # We build the question list using short, concatenated strings
-    qs = []
-    
-    # Q1
-    qs.append([
-        "In 'point-light' studies, what allowed observers to identify sex?",
-        ["Patterns of movement", "Static dots"],
-        "Patterns of movement",
-        "The brain decodes identity through the 'rhythm' of motion, "
-        "even without a visible body."
-    ])
-    
-    # Q2
-    qs.append([
-        "What do 'tie-signs' refer to in social analysis?",
-        ["Cues signaling a relationship", "Formal dress codes"],
-        "Cues signaling a relationship",
-        "Tie-signs (like touching or proximity) publicly signal "
-        "the bond between two people."
-    ])
-    
-    # Q3
-    qs.append([
-        "What skill is most linked to social success in children?",
-        ["Reading facial muscle movements", "Memorizing facts"],
-        "Reading facial muscle movements",
-        "Decoding nonverbal cues allows children to navigate social "
-        "nuances and gain peer acceptance."
-    ])
+    # Hardened Question Data
+    qs = [
+        {
+            "q": "In 'point-light' studies, what identifies sex and emotion?",
+            "o": ["Patterns of movement", "Static dots"],
+            "c": "Patterns of movement",
+            "e": "The brain decodes identity through the rhythm of motion."
+        },
+        {
+            "q": "What do 'tie-signs' refer to in social groups?",
+            "o": ["Cues signaling a relationship", "Dress codes"],
+            "c": "Cues signaling a relationship",
+            "e": "Tie-signs are signals like a hand on a shoulder."
+        },
+        {
+            "q": "What skill is linked to social success in children?",
+            "o": ["Reading facial muscles", "Academic facts"],
+            "c": "Reading facial muscles",
+            "e": "Decoding nonverbal cues allows for peer acceptance."
+        },
+        {
+            "q": "When a person leans forward, what is the signal?",
+            "o": ["High receptivity", "Boredom"],
+            "c": "High receptivity",
+            "e": "A forward lean signals engagement and openness."
+        },
+        {
+            "q": "Large physical distance often signals what?",
+            "o": ["Lower social stature", "High authority"],
+            "c": "Lower social stature",
+            "e": "Distance is often used to avoid appearing as a threat."
+        },
+        {
+            "q": "Define the 'parallel track' of communication.",
+            "o": ["Nonverbal cues with speech", "Two languages"],
+            "c": "Nonverbal cues with speech",
+            "e": "The nonverbal track handles the emotional truth."
+        },
+        {
+            "q": "Where do men look for reassurance when threatened?",
+            "o": ["Partners/companions", "Strangers"],
+            "c": "Partners/companions",
+            "e": "Individuals look to 'safe' targets for support."
+        },
+        {
+            "q": "Why is nonverbal signaling 'automatic'?",
+            "o": ["Involuntary muscles", "Practice"],
+            "c": "Involuntary muscles",
+            "e": "The limbic system controls signals like pupil dilation."
+        },
+        {
+            "q": "In 'point-light' studies, what happens when dots stop?",
+            "o": ["Figure disappears", "Figure stays"],
+            "c": "Figure disappears",
+            "e": "The brain requires motion to perceive the human form."
+        },
+        {
+            "q": "How do nonverbal cues help navigate hierarchies?",
+            "o": ["By signaling status", "By finding exits"],
+            "c": "By signaling status",
+            "e": "Body language acts as a map of social power."
+        }
+    ]
 
-    # Q4
-    qs.append([
-        "When a person leans forward, what is the signal?",
+    if st.session_state.step < len(qs):
+        curr = qs[st.session_state.step]
+        st.subheader(f"Question {st.session_state.step + 1}")
+        st.write(f"**{curr['q']}**")
+        
+        ans = st.radio("Pick one:", curr['o'], key=f"ans_{st.session_state.step}")
+        
+        if st.button("Check Answer"):
+            if ans == curr['c']:
+                st.session_state.score += 1
+                st.session_state.fb = ("ok", f"CORRECT: {curr['e']}")
+            else:
+                st.session_state.fb = ("no", f"WRONG: {curr['e']}")
+
+        if st.session_state.fb:
+            res, msg = st.session_state.fb
+            if res == "ok": st.success(msg)
+            else: st.error(msg)
+            
+            if st.button("Next ➡️"):
+                st.session_state.step += 1
+                st.session_state.fb = None
+                st.rerun()
+    else:
+        st.balloons()
+        st.header(f"Final Score: {st.session_state.score} / {len(qs)}")
+        if st.button("Restart"):
+            st.session_state.step = 0
+            st.session_state.score = 0
+            st.rerun()
+
+if __name__ == "__main__":
+    main()
