@@ -70,4 +70,31 @@ def main():
     
     # Q3
     qs.append([
-        "What skill is most linked
+        "What skill is most linked to social success in children?",
+        ["Reading facial muscle movements", "Memorizing facts"],
+        "Reading facial muscle movements",
+        "Decoding nonverbal cues allows children to navigate social nuances and gain peer acceptance."
+    ])
+
+    # Q4
+    qs.append([
+        "When a person leans their torso forward, what is the signal?",
+        ["Receptivity and interest", "Boredom"],
+        "Receptivity and interest",
+        "Leaning in is a 'proximity cue' that signals the listener is engaged and wants to be closer."
+    ])
+
+    # Q5
+    qs.append([
+        "What does large physical distance typically signal about stature?",
+        ["Lower perceived social stature", "High authority"],
+        "Lower perceived social stature",
+        "Lower-status individuals often maintain distance to avoid appearing as a threat to higher-status individuals."
+    ])
+
+    # Q6
+    qs.append([
+        "How is the 'parallel track' of communication defined?",
+        ["Nonverbal cues running alongside speech", "Speaking two languages"],
+        "Nonverbal cues running alongside speech",
+        "The verbal track conveys data, while the parallel nonverbal track conveys emotional truth
