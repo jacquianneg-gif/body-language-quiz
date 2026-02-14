@@ -1,63 +1,40 @@
 import streamlit as st
 
 def main():
-    st.set_page_config(page_title="Lab", layout="wide")
-    st.title("Body Language Lab")
+    st.set_page_config(page_title="Body Language Lab", layout="wide")
+    st.title("The Professional Body Language Lab")
+    st.markdown("### Bridging Nonverbal Theory and Social Literacy")
     
-    st.header("I. SIMULATOR")
+    st.divider()
+    st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
+    st.info("Study the 'Parallel Track'—the automatic nonverbal signals that run with speech.")
+    
+    # Simulator Buttons
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("😊 Joy"): st.success("JOY: Crinkled eyes.")
-        if st.button("🙇‍♂️ Lean"): st.info("LEAN: High interest.")
+        if st.button("😊 Joy"): st.success("JOY: Duchenne smile (crinkled eyes). Signals warmth.")
+        if st.button("🙇‍♂️ Lean"): st.info("LEAN: Forward movement indicates high interest and openness.")
     with c2:
-        if st.button("😠 Anger"): st.error("ANGER: Tight lips.")
-        if st.button("🙅‍♂️ Fold"): st.error("FOLD: Defensive.")
+        if st.button("😠 Anger"): st.error("ANGER: Tightened lips and lowered brow. Signals resistance.")
+        if st.button("🙅‍♂️ Fold"): st.error("FOLD: Crossed arms signal defensiveness or barriers.")
     with c3:
-        if st.button("😨 Fear"): st.warning("FEAR: Raised brows.")
-        if st.button("👤 Hunch"): st.warning("HUNCH: Lower status.")
+        if st.button("😨 Fear"): st.warning("FEAR: Raised brows and widened eyes. Signals stress.")
+        if st.button("👤 Hunch"): st.warning("HUNCH: Signals lower social stature and vulnerability.")
     
-    st.subheader("Social Distance Ruler")
-    v = st.slider("Feet:", 1, 15, 5)
-    if v <= 3: st.success(f"{v}ft: INTIMATE")
-    elif v <= 10: st.info(f"{v}ft: SOCIAL")
-    else: st.error(f"{v}ft: PUBLIC")
+    st.subheader("Proxemics: Social Distance Ruler")
+    v = st.slider("Distance (feet):", 1, 15, 5)
+    if v <= 3: st.success(f"{v}ft: INTIMATE ZONE. High-trust bonds.")
+    elif v <= 10: st.info(f"{v}ft: SOCIAL ZONE. Professional/Peer interactions.")
+    else: st.error(f"{v}ft: PUBLIC ZONE. Formal speaking/Strangers.")
 
     st.divider()
-    st.header("II. QUIZ")
-    if "s" not in st.session_state: st.session_state.s = 0
-    if "sc" not in st.session_state: st.session_state.sc = 0
+    st.header("II. COMPREHENSIVE ASSESSMENT")
+    
+    if "step" not in st.session_state: st.session_state.step = 0
+    if "score" not in st.session_state: st.session_state.score = 0
+    if "show" not in st.session_state: st.session_state.show = False
 
+    # 10 Detailed Questions with Mixed Answers (A and B)
     qs = [
-        ("Identify sex in dot studies via?", ["Movement", "Color"], "Movement"),
-        ("What are 'tie-signs'?", ["Relationship cues", "Dress codes"], "Relationship cues"),
-        ("Success linked to reading?", ["Face muscles", "Math"], "Face muscles"),
-        ("Leaning forward signals?", ["Interest", "Boredom"], "Interest"),
-        ("Large distance signals?", ["Low status", "High status"], "Low status"),
-        ("The 'parallel track' is?", ["Nonverbal", "Speech"], "Nonverbal"),
-        ("Threatened men look to?", ["Partners", "Strangers"], "Partners"),
-        ("Cues are usually?", ["Automatic", "Manual"], "Automatic"),
-        ("No motion, figure?", ["Disappears", "Stays"], "Disappears"),
-        ("Cues help navigate?", ["Hierarchies", "Exits"], "Hierarchies")
-    ]
-
-    if st.session_state.s < len(qs):
-        q, opts, cor = qs[st.session_state.s]
-        st.write(f"Q {st.session_state.s + 1}: {q}")
-        ans = st.radio("Pick:", opts, key=f"q{st.session_state.s}")
-        if st.button("Submit"):
-            if ans == cor: 
-                st.success("Correct!")
-                st.session_state.sc += 1
-            else: st.error(f"Wrong. Correct: {cor}")
-            st.session_state.s += 1
-            st.button("Next")
-    else:
-        st.balloons()
-        st.write(f"Score: {st.session_state.sc}/10")
-        if st.button("Reset"):
-            st.session_state.s = 0
-            st.session_state.sc = 0
-            st.rerun()
-
-if __name__ == "__main__":
-    main()
+        ("What allowed observers to identify sex and emotion in 'point-light' studies?", ["Static dot patterns", "The patterns of movement"], "The patterns of movement", "Motion allows the brain to decode identity and emotion."),
+        ("What does the term 'tie-signs' refer
