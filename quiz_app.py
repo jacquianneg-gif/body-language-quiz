@@ -3,41 +3,66 @@ import streamlit as st
 def main():
     st.set_page_config(page_title="Body Language Lab", layout="wide")
     st.title("The Professional Body Language Lab")
-    st.markdown("### Bridging Nonverbal Theory and Social Literacy")
     st.divider()
     
-    # --- SECTION I: SIMULATOR ---
-    st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
-    st.info("Instructions: Click buttons to reveal interpretations and use the slider to check social zones.")
+    # Section I: Simulator
+    st.header("I. Behavioral Analysis Simulator")
+    st.info("Click buttons to see how signals are interpreted.")
     
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        if st.button("😊 True Joy"): st.success("TRUE JOY: Characterized by involuntary muscle contraction around the eyes, signaling genuine rapport.")
-        if st.button("🙇‍♂️ The Lean"): st.info("THE LEAN: Moving the torso toward a speaker indicates high levels of interest and receptivity.")
-    with c2:
-        if st.button("😠 Resistance"): st.error("RESISTANCE: Tightened lips and a lowered brow signal internal disagreement or a lack of openness.")
-        if st.button("🙅‍♂️ Barriers"): st.error("BARRIERS: Crossing arms can signal a defensive posture or a subconscious need for protection.")
-    with c3:
-        if st.button("😨 Stress"): st.warning("STRESS: Raised eyebrows and widened eyes signal that a person feels overwhelmed by their environment.")
-        if st.button("👤 Diminishment"): st.warning("DIMINISHMENT: Hunching shoulders signals a lack of confidence or lower perceived social stature.")
-    
-    st.subheader("The Social Distance Ruler")
-    v = st.slider("Physical Distance (feet):", 1, 15, 5)
-    if v <= 3: st.success(f"{v} ft: INTIMATE ZONE. Reserved for high-trust bonds and close personal relationships.")
-    elif v <= 10: st.info(f"{v} ft: SOCIAL ZONE. The standard distance for professional interactions and peer discussions.")
-    else: st.error(f"{v} ft: PUBLIC ZONE. Typical for formal public speaking or interactions with strangers.")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("😊 Genuine Smile"): 
+            st.success("Signal: Involuntary muscle contraction around eyes.")
+        if st.button("🙇‍♂️ Torso Lean"): 
+            st.info("Signal: Moving toward a speaker indicates high interest.")
+    with col2:
+        if st.button("🙅‍♂️ Arm Barrier"): 
+            st.error("Signal: Can indicate defensiveness or a need for safety.")
+        if st.button("😨 Facial Stress"): 
+            st.warning("Signal: Widened eyes indicate feeling overwhelmed.")
 
+    # Section II: Assessment
     st.divider()
+    st.header("II. Comprehensive Assessment")
     
-    # --- SECTION II: ASSESSMENT ---
-    st.header("II. COMPREHENSIVE ASSESSMENT")
     if "step" not in st.session_state: st.session_state.step = 0
     if "score" not in st.session_state: st.session_state.score = 0
-    if "show" not in st.session_state: st.session_state.show = False
 
-    # Assessment data - Structured to prevent truncation errors
-    qs = [
-        ["In 'point-light' studies, what information allowed observers to identify sex and emotion?", ["Patterns of movement", "Static arrangement of dots"], "Patterns of movement", "The brain decodes identity and emotion through the rhythm of motion, even without a visible body."],
-        ["What does the term 'tie-signs' refer to when analyzing human behavior in a group?", ["Cues signaling a relationship exists", "Formal group dress codes"], "Cues signaling a relationship exists", "Tie-signs are signals like a hand on a shoulder that inform observers of a specific bond between people."],
-        ["What skill is most closely linked to social success and popularity in children?", ["Reading facial muscle movements", "Memorizing academic facts"], "Reading facial muscle movements", "Accurately decoding nonverbal cues leads to better social navigation and significantly higher peer acceptance."],
-        ["When a person leans their torso forward, what is the most likely social signal?", ["High receptivity and interest",
+    # Data is structured simply to prevent any truncation errors
+    questions = [
+        ["What identifies sex/emotion in 'point-light' studies?", ["Movement patterns", "Static dots"], "Movement patterns"],
+        ["What are 'tie-signs' in social groups?", ["Cues showing a relationship", "Dress codes"], "Cues showing a relationship"],
+        ["Which skill is linked to social success in children?", ["Reading facial muscles", "Academic facts"], "Reading facial muscles"],
+        ["What does leaning forward usually signal?", ["High interest", "Boredom"], "High interest"],
+        ["Large physical distance often signals what?", ["Lower social stature", "High authority"], "Lower social stature"],
+        ["Define the 'parallel track' of communication.", ["Nonverbal cues with speech", "Two languages"], "Nonverbal cues with speech"],
+        ["Where do men look for reassurance if threatened?", ["Partners/companions", "Strangers"], "Partners/companions"],
+        ["Why is nonverbal signaling 'automatic'?", ["Involuntary muscles", "Practice"], "Involuntary muscles"],
+        ["What happens in 'point-light' studies when dots stop?", ["Figure disappears", "Figure stays"], "Figure disappears"],
+        ["How do nonverbal cues help in social groups?", ["Signal status/receptivity", "Find exits"], "Signal status/receptivity"]
+    ]
+
+    if st.session_state.step < len(questions):
+        q_text, opts, correct = questions[st.session_state.step]
+        st.write(f"### Question {st.session_state.step + 1}")
+        st.write(f"**{q_text}**")
+        ans = st.radio("Choose one:", opts, key=f"ans_{st.session_state.step}")
+        
+        if st.button("Submit Answer"):
+            if ans == correct:
+                st.success("Correct!")
+                st.session_state.score += 1
+            else:
+                st.error(f"Incorrect. The answer is: {correct}")
+            st.session_state.step += 1
+            st.button("Next Question")
+    else:
+        st.balloons()
+        st.header(f"Final Score: {st.session_state.score} / 10")
+        if st.button("Restart"):
+            st.session_state.step = 0
+            st.session_state.score = 0
+            st.rerun()
+
+if __name__ == "__main__":
+    main()
