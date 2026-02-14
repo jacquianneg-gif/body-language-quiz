@@ -1,8 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# FULL, SELF-CONTAINED SCRIPT
-html_code = """
+# 1. START OF STRING
+app_html = """
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,4 +62,41 @@ html_code = """
 </head>
 <body>
     <div class="card">
-        <h1 style="margin-top:0;">🕵️
+        <h1 style="margin-top:0;">🕵️ Body Language Lab</h1>
+        
+        <div class="instructions">
+            <h4>📋 Student Instructions:</h4>
+            <ol style="margin: 0; padding-left: 20px;">
+                <li><strong>Read the Scenario:</strong> Analyze the social interaction carefully.</li>
+                <li><strong>Identify Cues:</strong> Look for contradictions in physical signals.</li>
+                <li><strong>Analyze:</strong> Select the answer backed by research.</li>
+            </ol>
+        </div>
+
+        <div class="scenario">
+            <strong>Scenario:</strong> You notice a candidate's voice sounds confident, but their eyes aren't "crinkling" when they smile, and they have subtly increased their physical distance.
+        </div>
+
+        <p><strong>1. What does the lack of "eye crinkling" suggest?</strong></p>
+        
+        <button class="option" onclick="document.getElementById('fb').style.display='block'">
+            A) It is likely a "social" or forced smile.
+        </button>
+        
+        <button class="option" onclick="alert('Try again!')">
+            B) It indicates the candidate is extremely focused.
+        </button>
+
+        <div id="fb" class="feedback">
+            <strong>Correct!</strong> Research shows genuine smiles (Duchenne smiles) involve involuntary eye-area muscle movement.
+        </div>
+    </div>
+</body>
+</html>
+""" 
+# 2. END OF STRING (THIS IS THE PART THAT WAS MISSING)
+
+# 3. RENDER THE HTML
+components.html(app_html, height=850, scrolling=True)
+
+# THE VERY END OF FILE
