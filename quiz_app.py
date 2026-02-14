@@ -1,23 +1,72 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Restore original white-container dashboard with Student Instructions
-app_content = """
+# This is the full, verified code for the White Card Dashboard
+html_content = """
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        body { background-color: #f4f7f9; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .container { max-width: 600px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        body { 
+            background-color: #f0f2f6; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex; 
+            justify-content: center; 
+            padding: 40px 20px;
+        }
+        .card { 
+            max-width: 650px; 
+            width: 100%;
+            background: white; 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+        }
+        h1 { margin-top: 0; font-size: 28px; display: flex; align-items: center; gap: 12px; }
         
-        h2 { display: flex; align-items: center; gap: 10px; margin-top: 0; }
+        /* Blue Student Instructions Box */
+        .instructions { 
+            background-color: #eaf2ff; 
+            border-left: 4px solid #1a73e8; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 25px; 
+        }
+        .instructions h4 { margin: 0 0 10px 0; color: #1a73e8; font-size: 18px; }
+        .instructions ol { margin: 0; padding-left: 20px; line-height: 1.6; color: #333; }
+
+        /* Yellow Scenario Box */
+        .scenario { 
+            background-color: #fff9e6; 
+            padding: 20px; 
+            border-radius: 10px; 
+            border: 1px solid #ffeeba; 
+            margin-bottom: 30px; 
+            line-height: 1.5;
+            color: #856404;
+        }
+
+        /* Quiz Buttons */
+        .question { font-weight: 600; margin-bottom: 15px; font-size: 18px; }
+        .option { 
+            background: #f8f9fa; 
+            border: 1px solid #e9ecef; 
+            padding: 18px; 
+            margin: 12px 0; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            width: 100%; 
+            text-align: left; 
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        .option:hover { background: #f1f3f5; border-color: #dee2e6; }
         
-        .instructions { background-color: #e8f0fe; border-left: 4px solid #1a73e8; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
-        .instructions h4 { margin: 0 0 10px 0; color: #1a73e8; }
-        
-        .scenario { background-color: #fff9c4; padding: 15px; border-radius: 8px; border: 1px solid #fbc02d; margin-bottom: 20px; }
-        
-        .option { background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; margin: 10px 0; border-radius: 6px; cursor: pointer; width: 100%; text-align: left; }
-        .option:hover { background: #e9ecef; }
-        
-        .feedback { display: none; margin-top: 15px; padding: 15px; border-radius: 6px; background: #e6f4ea; color: #1e7e34; border: 1px solid #c3e6
+        /* Green Feedback Box */
+        .feedback { 
+            display: none; 
+            margin-top: 20px; 
+            padding: 20px; 
+            border-radius: 10px; 
+            background: #e6f4ea; 
+            color: #
