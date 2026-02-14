@@ -7,14 +7,15 @@ def main():
     
     st.divider()
     
-    # I. BEHAVIORAL ANALYSIS SIMULATOR
+    # --- I. BEHAVIORAL ANALYSIS SIMULATOR ---
     st.header("I. BEHAVIORAL ANALYSIS SIMULATOR")
     
-    # SIMPLE INSTRUCTIONS ADDED HERE
+    # ADDED STUDENT INSTRUCTIONS
     st.info("""
-    **STUDENT INSTRUCTIONS:**
-    * **Icons:** Click each button below (Joy, Lean, Anger, etc.) to see what that signal conveys.
-    * **Slider:** Move the 'Distance Ruler' to see how physical space changes social zones.
+    **📋 STUDENT INSTRUCTIONS:**
+    1. **Reveal Cues:** Click the buttons in the columns below (😊, 🙇‍♂️, 😠, etc.) to learn what each specific body signal communicates.
+    2. **Observe Proximity:** Use the **'Distance (feet)' slider** to test how physical space affects social interaction zones.
+    3. **Test Knowledge:** Once you've explored, scroll down to Section II to begin your assessment.
     """)
     
     st.write("Study the 'Parallel Track'—automatic nonverbal signals that run with speech.")
@@ -31,14 +32,17 @@ def main():
         if st.button("👤 Hunch"): st.warning("HUNCH: Signals lower social stature and vulnerability.")
     
     st.subheader("Proxemics: Social Distance Ruler")
-    v = st.slider("Distance (feet):", 1, 15, 5)
+    
+    # ADDED SLIDER INSTRUCTIONS IN THE LABEL
+    v = st.slider("Distance Ruler (Slide to change feet and observe the zone):", 1, 15, 5)
+    
     if v <= 3: st.success(f"{v}ft: INTIMATE ZONE. High-trust bonds.")
     elif v <= 10: st.info(f"{v}ft: SOCIAL ZONE. Professional/Peer interactions.")
     else: st.error(f"{v}ft: PUBLIC ZONE. Formal speaking/Strangers.")
 
     st.divider()
     
-    # II. COMPREHENSIVE ASSESSMENT
+    # --- II. COMPREHENSIVE ASSESSMENT ---
     st.header("II. COMPREHENSIVE ASSESSMENT")
     
     if "step" not in st.session_state: st.session_state.step = 0
@@ -46,17 +50,3 @@ def main():
     if "show" not in st.session_state: st.session_state.show = False
 
     # Shuffled 10 detailed questions
-    qs = [
-        ("What allowed observers to identify sex and emotion in 'point-light' studies?", 
-         ["The patterns of movement", "Static dot patterns"], 
-         "The patterns of movement", "Motion allows the brain to decode identity."),
-        ("What does the term 'tie-signs' refer to in nonverbal research?", 
-         ["Formal organizational dress codes", "Cues that signal a specific bond"], 
-         "Cues that signal a specific bond", "Tie-signs signal a relationship to observers."),
-        ("Social success and popularity in children is most linked to...", 
-         ["Reading facial muscle movements", "Memorizing academic facts"], 
-         "Reading facial muscle movements", "Popularity is linked to 'muscle reading'."),
-        ("When a person leans forward, what is the most likely signal?", 
-         ["Boredom or fatigue", "Receptivity and interest"], 
-         "Receptivity and interest", "Leaning forward shows interest and openness."),
-        ("Large physical distance typically
